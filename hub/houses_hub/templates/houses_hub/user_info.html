@@ -1,0 +1,29 @@
+{% include "./header.html" %}
+
+<h1> Fill form with personal information for {{application_info.application.house.address}} </h1>
+
+
+<form method = "POST" action = "{% url 'houses_hub:fill_application_info' application_info.id %}" >
+    {% csrf_token %}
+
+    Personal details: <br>
+    <input type="text" name="personal_details"><br>
+
+    Money: <br>
+    <input type="text" name="money"><br>
+
+    Letter of recommendation: <br>
+    <input type="text" name="letter_of_recommendation"><br>
+    {% if not application_info.application.students.exists %}
+        <input type="radio" name="submit_application" id="1" value="yes">
+        <label for="1"> Submit </label><br>
+        <input type="radio" name="submit_application" id="2" value="no">
+        <label for="2"> Don't submit </label><br>
+    {% endif %}
+    <input type = "submit" value = "Send">
+</form>
+{% if error_message %}
+    <p>{{error_message}}</p>
+{% endif %}
+
+

@@ -1,0 +1,32 @@
+<h1>{{issue.title}}</h1>
+<!-- Just showing message, but because of the model it is easy to show date username etc-->
+
+{% if message_list %}
+    {% for message in message_list %}
+        <p>{{message.sender.username}} - {{message.text}} - {{message.date_sent}} </p>
+    {% endfor %}
+{% endif %}
+
+<!-- Write new message part part -->
+{% if user %}
+    {% if not issue.closed %}
+        {% if user.usertype == 1 and user.lease.house == issue.house or user.usertype == 2 and user == issue.house.agency or user.usertype == 3 and user.agency == issue.house.agency.username %}
+            <form method = "POST" action = "{% url 'issues:chat' issue.id %}" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type = "submit" value = "Send">
+            </form>
+            {% if error_message %}
+                <p>{{error_message}}</p>
+            {% endif %}
+            {% if not issue.closed and user.usertype == 1 %}
+                <form name="close_issue" method="post" action="{% url 'issues:close' issue.id %}">
+                    <input type="submit" value="Close issue">
+                </form>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+
+

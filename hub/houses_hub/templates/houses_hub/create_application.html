@@ -1,0 +1,10 @@
+{% include "./header.html" %}
+<h1> Apply for the house {{house.address}}</h1>
+<form method = "POST" action = "{% url 'houses_hub:create_application' house.id %}" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type = "submit" value = "Send">
+</form>
+{% if error_message %}
+    <p>{{error_message}}</p>
+{% endif %}

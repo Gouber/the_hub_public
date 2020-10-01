@@ -1,0 +1,7 @@
+<h1>Create a single agent here</h1>
+
+<form action = "{% url 'login_register_service_hub:create_agent'%}" method = "POST">
+{% csrf_token %}
+{{form.as_p}}
+<input type = "submit" value = "Create Agent">
+</form>

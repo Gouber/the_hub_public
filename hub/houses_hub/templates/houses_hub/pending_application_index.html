@@ -1,0 +1,11 @@
+{% include "./header.html" %}
+<h1> Pending applications </h1>
+{% if pending_applications %}
+	<ul>
+    {% for application in pending_applications %}
+        <li><a href="{% url 'houses_hub:accept_application' application.id %}">{{ application.house.address }}-{{application.applicationinfo_set.all.first.student.email}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+	<p>There are no pending applications yet</p>
+{% endif %}

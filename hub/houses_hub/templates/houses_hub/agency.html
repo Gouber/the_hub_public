@@ -1,0 +1,8 @@
+{% include "./header.html" %}
+<h1>This is the agency homepage</h1>
+
+<a href="{% url 'login_register_service_hub:create_agent'%}">Create Agent</a>
+
+
+    <p><a href = "{% url 'issues:house_index' %}">House Issues</a></p>
+    <p><a href = "{% url 'houses_hub:managed_houses'%}"> Accept applications of managed houses </a></p>

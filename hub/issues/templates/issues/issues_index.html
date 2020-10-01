@@ -1,0 +1,20 @@
+<h1>Issues for the house: {{issues_list.0.house.address}}</h1>
+{% if issues_list %}
+	<ul>
+    {% for issue in issues_list %}
+    <!-- Here more stuff could be added when displaying issue such as author time stamp etc, easy to implement -->
+                <li><a href="{% url 'issues:chat' issue.id %}">{{ issue.title }} 
+                {% if issue.closed %}
+                    -closed
+                {% endif %}
+                </a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+	<p>There are no issues yet</p>
+{% endif %}
+{% if yes %}
+        <a href = "{% url 'issues:create'%}">Open a new issue</a>
+{% endif %}
+
+

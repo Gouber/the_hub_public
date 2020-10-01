@@ -1,0 +1,12 @@
+{% include "./header.html" %}
+<h1> Edit application information </h1>
+{% if edit_applications %}
+	<ul>
+    {% for application in edit_applications %}
+    <!-- Here more stuff could be added when displaying issue such as author time stamp etc, easy to implement -->
+        <li><a href="{% url 'houses_hub:fill_application_info' application.id %}">{{ application.application.house.address }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+	<p>There are no applications you can edit </p>
+{% endif %}

@@ -1,0 +1,12 @@
+{% include "./header.html" %}
+<h1>{{ house.address }}</h1>
+
+<p> {{house.agency}} </p>
+
+{% if is_student %}
+
+    <a href="{% url 'houses_hub:create_application' house.id %}"> Apply to this house </a>
+
+{% endif %}
+
+<a href="{% url 'issues:index' house.id %}"> See the issues of the house </a>

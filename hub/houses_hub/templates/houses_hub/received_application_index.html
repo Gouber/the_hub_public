@@ -1,0 +1,12 @@
+{% include "./header.html" %}
+<h1> Received applications </h1>
+{% if received_applications %}
+	<ul>
+    {% for application in received_applications %}
+    <!-- Here more stuff could be added when displaying issue such as author time stamp etc, easy to implement -->
+        <li><a href="{% url 'houses_hub:accept_received_application' application.id %}">{{application.applicationinfo_set.all.first.student.email}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+	<p>The house doesn't have any applications yet </p>
+{% endif %}

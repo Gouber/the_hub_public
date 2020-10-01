@@ -1,0 +1,48 @@
+{% include "./header.html" %}
+
+<h1>Welcome to all the houses</h1>
+
+
+{{user}}
+{{user.usertype}}
+{{user.email}}
+
+
+<p><a href = "{% url 'houses_hub:index' %}">Browse Houses</a></p>
+{% if user.lease %}
+    <p><a href = "{% url 'issues:index' user.lease.house.id %}">House Issues</a></p>
+{% endif %}
+
+<!-- Go to index for accepting applications if multiple applications, just accept or not if 1, check student's application -->
+<!-- user.application_set.all() -->
+{% if user.application_set.all.exists %}
+    {% if user.application_set.all.count == 1%}
+        <p><a href = "{% url 'houses_hub:accept_application' user.application_set.all.first.id %}"> Confirm or deny applications </a></p>
+    {% else %}
+        <p><a href = "{% url 'houses_hub:pending_application_index' %}"> Confirm or deny applications </a></p>
+    {% endif %}
+{% endif %}
+
+<!-- Go to index for filling applications or just filling the application if 1 -->
+{% if user.applicationinfo_set.all.exists %}
+    {% if count == 1 %}
+        {% if not user.applicationinfo_set.all.first.application.submitted %}
+            <p><a href = "{% url 'houses_hub:fill_application_info' user.applicationinfo_set.all.first.id %}"> Fill applications </a></p>
+        {% endif %}
+    {% else %}
+        <p><a href = "{% url 'houses_hub:edit_application_index' %}"> Fill applications </a></p>
+    {% endif %}
+{% endif %}
+
+
+<h2>Search for Houses here</h2>
+<form action = " {% url 'houses_hub:index' %}" method = "POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type = "Submit" value = "Search">
+</form>
+
+{% if msg %}
+    <p>{{msg}}</p>
+
+{% endif %}

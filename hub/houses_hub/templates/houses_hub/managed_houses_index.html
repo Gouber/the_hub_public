@@ -1,0 +1,12 @@
+{% include "./header.html" %}
+<h1> Managed houses </h1>
+{% if managed_houses %}
+	<ul>
+    {% for house in managed_houses %}
+    <!-- Here more stuff could be added when displaying issue such as author time stamp etc, easy to implement -->
+        <li><a href="{% url 'houses_hub:received_applications' house.id %}">{{house.address}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+	<p> You are not managing any houses yet </p>
+{% endif %}

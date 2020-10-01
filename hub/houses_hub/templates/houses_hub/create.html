@@ -1,0 +1,8 @@
+{% include "./header.html" %}
+<h1>Create your house here</h1>
+
+<form method = "POST" action = "{% url 'houses_hub:create' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type = "submit" value = "Create House">
+</form>

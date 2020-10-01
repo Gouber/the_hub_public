@@ -1,0 +1,11 @@
+<h1>Login Here</h1>
+
+{% if error_message %}
+	<p>{{error_message}}</p>
+{% endif %}
+
+<form method = "POST" action = "{% url 'login_register_service_hub:login' %}" >
+{% csrf_token %}
+{{ form.as_p }}
+<input type = "submit" value = "Login">
+</form>

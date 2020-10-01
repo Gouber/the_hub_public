@@ -1,0 +1,23 @@
+<h1>{{issue.title}}</h1>
+<!-- Just showing message, but because of the model it is easy to show date username etc-->
+
+
+{% for message in message_list %}
+    <p>{{message.sender.username}} - {{message.text}} - {{message.date_sent}} </p>
+{% endfor %}
+
+<!-- Write new message part part -->
+<form method = "POST" action = "{% url 'issues:chat_student' issue.id %}" >
+{% csrf_token %}
+{{ form.as_p }}
+<input type = "submit" value = "Send">
+</form>
+{% if issue.closed %}
+{% else %}
+    <a href="{% url 'issues:close' issue.id %}">Close Issue</a>
+{% endif %}
+{% if error_message %}
+	<p>{{error_message}}</p>
+{% endif %}
+
+

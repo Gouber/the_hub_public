@@ -1,0 +1,14 @@
+<h1>Create Issue Here</h1>
+<h2>This is for house: {{house.address}}</h2>
+
+{% if error_message %}
+	<p>{{error_message}}</p>
+{% endif %}
+
+<form method = "POST" action = "{% url 'issues:create' %}" >
+{% csrf_token %}
+{{ form.as_p }}
+<input type = "submit" value = "Create">
+</form>
+
+

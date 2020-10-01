@@ -1,0 +1,12 @@
+{% include "./header.html" %}
+<h1>List of houses</h1>
+{% if house_list %}
+	<ul>
+    {% for house in house_list %}
+    <!-- Here more stuff could be added when displaying issue such as author time stamp etc, easy to implement -->
+        <li><a href="{% url 'houses_hub:detail' house.id %}">{{ house.address }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+	<p>There are no houses yet</p>
+{% endif %}

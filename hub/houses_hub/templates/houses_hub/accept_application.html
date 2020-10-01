@@ -1,0 +1,17 @@
+{% include "./header.html" %}
+<h1> Accept application {{application.house.address}} </h1>
+
+
+<form method = "POST" action = "{% url 'houses_hub:accept_application' application.id %}" >
+    {% csrf_token %}
+        <input type="radio" name="choice" id="1" value="Accept">
+        <label for="1"> Accept </label><br>
+        <input type="radio" name="choice" id="2" value="Reject">
+        <label for="2"> Reject </label><br>
+    <input type = "submit" value = "Send">
+</form>
+{% if error_message %}
+    <p>{{error_message}}</p>
+{% endif %}
+
+

@@ -1,0 +1,17 @@
+*.sqlite3
+*.pyc
+hub/db.sqlite3
+hub/venv/
+hub/.idea/hub.iml
+hub/.idea/misc.xml
+hub/.idea/
+*.iml
+venv/*
+.idea/*
+.ionide/*
+hub/db.sqlite3
+hub/.mypy_cache
+hub/venv/
+hub/venv/Lib/site-packages/asgiref-3.2.7.dist-info/LICENSE
+hub_frontend/.idea
+hub/.idea
