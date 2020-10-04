@@ -13,7 +13,7 @@ Undertaking this project has been a steep learning curve of technologies I'd nev
 Here is a breakdown of the technologies used, the challenges that came with them and what I've
 managed to learn throughout this process:
 
-###Django
+### Django
 
 I never used Django before tackling this project, and my understanding of python syntax was 
 minimal. I had to go through the initial tutorials on Django with the Python documentation opened. Often, I'd 
@@ -45,7 +45,7 @@ this shows code for different logic (because the `simple-jwt` package comes with
 For more examples of my applied knowledge of Django please browse this repository - you'll find elegant solutions 
 backed by rigorous testing to problems ranging from optimizing data-flow to addressing security concerns.  
 
-###React
+### React
 
 I had no React experience in the past. My Javascript level was beginner at best and I never worked 
 with Typescript either. I took the challenge of writing a frontend in React (and later to replace Javascript with Typescript) because I like new challenges 
@@ -88,7 +88,7 @@ functionality in its logical parts.
 
 
 
-#Conclusion
+# Conclusion
 
 Tackling such a project taught me a great deal about planning & researching. I had to carefully plan the models and the views 
 so as to allow for the complex relations one would expect from a bigger project. The code was written
